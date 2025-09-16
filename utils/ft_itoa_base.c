@@ -6,11 +6,11 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 00:22:18 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/16 00:53:28 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/16 19:54:36 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_printf.h"
 
 static int	get_len(unsigned long n, int base_len)
 {
