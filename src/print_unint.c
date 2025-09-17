@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_unint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 20:29:36 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/17 20:26:33 by thribeir         ###   ########.fr       */
+/*   Created: 2025/09/17 19:57:57 by thribeir          #+#    #+#             */
+/*   Updated: 2025/09/17 20:05:50 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	main(void)
+int	print_unint(va_list args)
 {
-	int		i;
-	int		f;
-	int		value;
-	char	*test;
+	unsigned int		n;
+	int					len;
+	char				*num;
 
-	value = 42;
-	test = NULL;
-	i = ft_printf("um simples %X teste %s %s", value, test, "oi");
-	f = printf("um simples %X teste %s %s", value, test, "oi");
-	ft_printf("%d", i);
-	printf("%d", f);
+	n = va_arg(args, unsigned int);
+	num = ft_itoa_base(n, "0123456789");
+	len = (int)ft_strlen(num);
+	write(1, num, len);
+	free(num);
+	return (len);
 }

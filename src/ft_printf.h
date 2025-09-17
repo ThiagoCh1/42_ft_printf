@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 17:56:10 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/17 18:47:47 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:22:24 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int		print_int(va_list args);
 int		print_char(va_list args);
 int		print_str(va_list args);
 int		print_ptr(va_list args);
+int		print_unint(va_list args);
+int		print_hex(va_list args, char *base);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:36:05 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/17 18:36:55 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:31:59 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,21 @@ int	print_type(char c, va_list args)
 		return (print_str(args));
 	else if (c == 'p')
 		return (print_ptr(args));
+	else if (c == 'u')
+		return (print_unint(args));
+	else if (c == 'x')
+		return (print_hex(args, "0123456789abcdef"));
+	else if (c == 'X')
+		return (print_hex(args, "0123456789ABCDEF"));
+	else if (c == '%')
+	{
+		write(1, &c, 1);
+		return (1);
+	}
 	return (0);
 }
 
-int	ft_printf(char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	int		i;
 	int		count;
