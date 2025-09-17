@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:29:36 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/17 02:13:47 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:32:56 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 
 int	main(void)
 {
-	int	i;
-	int	f;
+	int		i;
+	int		f;
+	int		value;
+	int		*ptr;
+	char	*test;
 
-	i = ft_printf("um simples %c teste %s %s", 'a', "isso eh uma string", "oi");
-	f = printf("um simples %c teste %s %s", 'a', "isso eh uma string", "oi");
+	value = 42;
+	ptr = &value;
+	test = NULL;
+	i = ft_printf("um simples %p teste %s %s", (void *)ptr, test, "oi");
+	f = printf("um simples %p teste %s %s", (void *)ptr, test, "oi");
 	ft_printf("%d", i);
 	printf("%d", f);
 }
