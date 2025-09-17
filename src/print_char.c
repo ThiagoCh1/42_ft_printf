@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 17:56:10 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/17 02:02:34 by thribeir         ###   ########.fr       */
+/*   Created: 2025/09/17 01:44:45 by thribeir          #+#    #+#             */
+/*   Updated: 2025/09/17 01:49:58 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include "../42_libft/libft.h"
+int	print_char(va_list args)
+{
+	char	c;
 
-int		ft_printf(char *format, ...);
-char	*ft_itoa_base(unsigned long n, char *base);
-int		print_int(va_list args);
-int		print_char(va_list args);
-int		print_str(va_list args);
-
-#endif
+	c = (char)va_arg(args, int);
+	write (1, &c, 1);
+	return (1);
+}

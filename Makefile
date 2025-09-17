@@ -5,7 +5,7 @@ INC_DIR = src
 UTILS_DIR = utils
 LIBFT_DIR = 42_libft
 
-SRC = ft_printf.c print_int.c
+SRC = ft_printf.c print_int.c print_char.c print_str.c
 UTILS = ft_itoa_base.c
 OBJ = $(SRC:%.c=$(SRC_DIR)/%.o) $(UTILS:%.c=$(UTILS_DIR)/%.o)
 

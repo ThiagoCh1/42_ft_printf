@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:36:05 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/16 21:06:38 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/17 01:44:36 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	print_type(char c, va_list args)
 {
 	if (c == 'd' || c == 'i')
 		return (print_int(args));
+	else if (c == 'c')
+		return (print_char(args));
+	else if (c == 's')
+		return (print_str(args));
 	return (0);
 }
 
