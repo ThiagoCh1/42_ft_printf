@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:00:17 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/20 21:11:57 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/20 21:55:46 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*apply_precision_num(char *s, t_format *fmt)
 	if (len < fmt -> precision)
 	{
 		pad = ft_calloc((fmt -> precision - len) + 1, 1);
+		if (!pad)
+			return (NULL);
 		ft_memset(pad, '0', fmt -> precision - len);
 		new_s = ft_strjoin(pad, s);
 		free(s);
