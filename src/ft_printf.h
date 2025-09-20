@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 17:56:10 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/17 20:22:24 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/20 04:59:49 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,18 @@ int		print_str(va_list args);
 int		print_ptr(va_list args);
 int		print_unint(va_list args);
 int		print_hex(va_list args, char *base);
+
+typedef struct s_format
+{
+	int		width;
+	int		precision;
+	int		has_precision;
+	int		left_align;
+	int		zero_pad;
+	int		plus;
+	int		space;
+	int		hash;
+	char	spec;
+}	t_format;
 
 #endif
