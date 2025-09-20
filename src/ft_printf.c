@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:36:05 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/20 06:25:26 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/20 18:57:39 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,47 +34,6 @@ int	print_type(char c, va_list args)
 		return (1);
 	}
 	return (0);
-}
-
-int	parse_format(const char *format, int i, t_format *fmt, va_list args)
-{
-	while (format[i] && !ft_strchr("dicspuxX%", format[i]))
-	{
-		if (format[i] == ' ')
-			fmt -> space = 1;
-		else if
-			(format[i] == '0')
-			fmt -> zero_pad = 1;
-		else if (format[i] == '+')
-			fmt -> plus = 1;
-		else if (format[i] == '-')
-			fmt -> left_align = 1;
-		else if (format[i] == '.')
-		{
-			i++;
-			fmt -> has_precision = 1;
-			if (format[i] == '*')
-				fmt -> precision = va_arg(args, int);
-			else
-			{
-				fmt -> precision = 0;
-				while (ft_isdigit(format[i]))
-					fmt -> precision = fmt -> precision * 10
-						+ (format[i++] - '0');
-			}
-		}
-		else if (ft_isdigit(format[i]))
-		{
-			fmt -> width = 0;
-			while (ft_isdigit(format[i]))
-				fmt -> width = fmt -> width * 10 + (format[i++] - '0');
-		}
-		/*Need to split in 3 functions in another file
-		its missing the # flag
-		deal with * in widith
-		separete in normal flags, width and precision
-		*/
-	}
 }
 
 int	ft_printf(const char *format, ...)
