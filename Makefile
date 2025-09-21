@@ -6,8 +6,8 @@ UTILS_DIR = utils
 LIBFT_DIR = 42_libft
 
 SRC	=	ft_printf.c print_int.c print_char.c print_str.c print_ptr.c print_unint.c \
-		print_hex.c
-UTILS = ft_itoa_base.c
+		print_hex.c parse_format.c
+UTILS = ft_itoa_base.c apply_precision.c apply_width.c strjoin_free.c
 OBJ = $(SRC:%.c=$(SRC_DIR)/%.o) $(UTILS:%.c=$(UTILS_DIR)/%.o)
 
 CC = cc

@@ -6,9 +6,11 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 21:18:46 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/20 21:56:18 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/09/21 01:24:13 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 char	*apply_width(char *s, t_format *fmt)
 {

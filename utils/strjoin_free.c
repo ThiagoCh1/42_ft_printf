@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   strjoin_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 01:50:15 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/21 04:59:27 by thribeir         ###   ########.fr       */
+/*   Created: 2025/09/21 02:43:35 by thribeir          #+#    #+#             */
+/*   Updated: 2025/09/21 02:55:47 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_str(va_list args, t_format *fmt)
+char	*strjoin_free(char *pre, char *s)
 {
-	char	*str;
-	int		len;
+	char	*new_s;
 
-	str = va_arg(args, char *);
-	if (!str)
-		str = ft_strdup("(null)");
-	else
-		str = ft_strdup(str);
-	if (!str)
-		return (-1);
-	if (fmt -> has_precision)
-	{
-		str = apply_precision_str(str, fmt);
-		fmt -> zero_pad = 0;
-	}
-	str = apply_width(str, fmt);
-	len = ft_strlen(str);
-	write(1, str, len);
-	free(str);
-	return (len);
+	if (!pre || !s)
+		return (NULL);
+	new_s = ft_strjoin(pre, s);
+	free(s);
+	return (new_s);
 }
