@@ -6,32 +6,47 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 01:50:15 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/21 04:59:27 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/15 01:18:05 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	write_and_free(char *s)
+{
+	size_t	n;
+
+	n = ft_strlen(s);
+	write(1, s, n);
+	free(s);
+	return ((int)n);
+}
+
 int	print_str(va_list args, t_format *fmt)
 {
-	char	*str;
-	int		len;
+	const char	*src;
+	size_t		len;
+	char		*out;
 
-	str = va_arg(args, char *);
-	if (!str)
-		str = ft_strdup("(null)");
-	else
-		str = ft_strdup(str);
-	if (!str)
-		return (-1);
-	if (fmt -> has_precision)
+	src = va_arg(args, char *);
+	if (!src)
 	{
-		str = apply_precision_str(str, fmt);
-		fmt -> zero_pad = 0;
+		if (fmt->has_precision && fmt->precision < 6)
+			src = "";
+		else
+			src = "(null)";
 	}
-	str = apply_width(str, fmt);
-	len = ft_strlen(str);
-	write(1, str, len);
-	free(str);
-	return (len);
+	len = ft_strlen(src);
+	if (fmt->has_precision && (size_t)fmt->precision < len)
+		len = (size_t)fmt->precision;
+	out = (char *)malloc(len + 1);
+	if (!out)
+		return (-1);
+	ft_memcpy(out, src, len);
+	out[len] = '\0';
+	fmt->zero_pad = 0;
+	out = apply_width(out, fmt);
+	if (!out)
+		return (-1);
+	return (write_and_free(out));
 }

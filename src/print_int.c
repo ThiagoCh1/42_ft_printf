@@ -6,53 +6,65 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 19:51:21 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/21 05:33:41 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/15 00:35:11 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	get_sign(int *n)
+static char	get_sign(long long *n)
 {
 	if (*n < 0)
 	{
-		*n = -*n;
+		*n = -(*n);
 		return ('-');
 	}
 	return (0);
 }
 
-char	*apply_sign(char *s, char sign, t_format *fmt)
+static char	*apply_sign(char *s, char sign, t_format *fmt)
 {
+	const char	*prefix;
+	char		*temp;
+
+	prefix = NULL;
 	if (sign)
-		return (strjoin_free("-", s));
-	else if (fmt -> plus)
-		return (strjoin_free("+", s));
-	else if (fmt -> space)
-		return (strjoin_free(" ", s));
+		prefix = "-";
+	else if (fmt->plus)
+		prefix = "+";
+	else if (fmt->space)
+		prefix = " ";
+
+	if (prefix)
+	{
+		temp = ft_strjoin(prefix, s);
+		free(s);
+		return (temp);
+	}
 	return (s);
 }
 
 int	print_int(va_list args, t_format *fmt)
 {
-	int		n;
-	char	sign;
-	char	*num;
-	int		len;
+	long long	n;
+	char		sign;
+	char		*num;
+	int			len;
 
-	n = va_arg(args, int);
+	n = (long long)va_arg(args, int);
 	sign = get_sign(&n);
-	num = ft_itoa(n);
-	if (fmt -> has_precision)
+	num = ft_itoa_base(n, "0123456789");
+
+	if (fmt->has_precision)
 	{
 		num = apply_precision_num(num, fmt);
-		fmt -> zero_pad = 0;
+		fmt->zero_pad = 0;
 	}
 	num = apply_sign(num, sign, fmt);
 	num = apply_width(num, fmt);
+
 	len = (int)ft_strlen(num);
 	write(1, num, len);
 	free(num);
 	return (len);
 }
-
