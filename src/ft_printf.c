@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:36:05 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/21 05:15:03 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:22:00 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	print_type(t_format *fmt, va_list args)
 		return (print_char(args, fmt, 1));
 	return (0);
 }
-
 
 int	ft_printf(const char *format, ...)
 {

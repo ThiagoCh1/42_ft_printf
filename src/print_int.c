@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 19:51:21 by thribeir          #+#    #+#             */
-/*   Updated: 2025/10/15 00:35:11 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:22:32 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static char	*apply_sign(char *s, char sign, t_format *fmt)
 		prefix = "+";
 	else if (fmt->space)
 		prefix = " ";
-
 	if (prefix)
 	{
 		temp = ft_strjoin(prefix, s);
@@ -54,7 +53,6 @@ int	print_int(va_list args, t_format *fmt)
 	n = (long long)va_arg(args, int);
 	sign = get_sign(&n);
 	num = ft_itoa_base(n, "0123456789");
-
 	if (fmt->has_precision)
 	{
 		num = apply_precision_num(num, fmt);
@@ -62,7 +60,6 @@ int	print_int(va_list args, t_format *fmt)
 	}
 	num = apply_sign(num, sign, fmt);
 	num = apply_width(num, fmt);
-
 	len = (int)ft_strlen(num);
 	write(1, num, len);
 	free(num);

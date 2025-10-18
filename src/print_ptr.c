@@ -6,32 +6,41 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 18:37:51 by thribeir          #+#    #+#             */
-/*   Updated: 2025/10/15 01:10:43 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:33:04 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static size_t	hex_len(unsigned long v)
+{
+	size_t	n;
+
+	n = 0;
+	while (v)
+	{
+		v >>= 4;
+		n++;
+	}
+	return (n);
+}
+
 static char	*ptr_to_str(unsigned long v)
 {
-	const char		*hex = "0123456789abcdef";
-	unsigned long	t;
-	size_t			nd;
-	char			*s;
+	const char	*hex = "0123456789abcdef";
+	size_t		nd;
+	char		*s;
 
 	if (v == 0)
 		return (ft_strdup("(nil)"));
-	t = v;
-	nd = 1;
-	while (t >>= 4)
-		nd++;
+	nd = hex_len(v);
 	s = (char *)malloc(2 + nd + 1);
 	if (!s)
 		return (NULL);
 	s[0] = '0';
 	s[1] = 'x';
 	s[2 + nd] = '\0';
-	while (nd)
+	while (nd > 0)
 	{
 		nd--;
 		s[2 + nd] = hex[v & 0xF];
