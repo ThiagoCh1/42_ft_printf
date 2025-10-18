@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 17:56:10 by thribeir          #+#    #+#             */
-/*   Updated: 2025/09/21 05:18:17 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/18 15:24:13 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		print_str(va_list args, t_format *fmt);
 int		print_ptr(va_list args, t_format *fmt);
 int		print_unint(va_list args, t_format *fmt);
 int		print_hex(va_list args, char *base, t_format *fmt);
+int		print_percent(t_format *fmt);
 char	*apply_precision_num(char *s, t_format *fmt);
 char	*apply_precision_str(char *s, t_format *fmt);
 char	*apply_width(char *s, t_format *fmt);
