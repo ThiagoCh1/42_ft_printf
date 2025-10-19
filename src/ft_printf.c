@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:36:05 by thribeir          #+#    #+#             */
-/*   Updated: 2025/10/18 15:24:36 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/19 09:41:58 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,15 @@ int	ft_printf(const char *format, ...)
 	va_list		args;
 	t_format	fmt;
 
-	i = 0;
+	i = -1;
 	count = 0;
 	va_start(args, format);
-	while (format[i])
+	while (format[++i])
 	{
 		if (format[i] == '%')
 		{
 			ft_bzero(&fmt, sizeof(t_format));
 			i = parse_format(format, i + 1, &fmt, args);
-			if (fmt.left_align)
-				fmt.zero_pad = 0;
-			if (fmt.plus)
-				fmt.space = 0;
 			count += print_type(&fmt, args);
 		}
 		else
@@ -60,7 +56,6 @@ int	ft_printf(const char *format, ...)
 			write(1, &format[i], 1);
 			count++;
 		}
-		i++;
 	}
 	va_end(args);
 	return (count);

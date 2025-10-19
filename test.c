@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mytest.c                                           :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 12:40:29 by thribeir          #+#    #+#             */
-/*   Updated: 2025/10/18 14:12:38 by thribeir         ###   ########.fr       */
+/*   Created: 2025/10/19 10:30:07 by thribeir          #+#    #+#             */
+/*   Updated: 2025/10/19 10:47:34 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
 #include "ft_printf.h"
+#include <stdio.h>
 
 int main(void)
 {
-    int j = ft_printf("%5%\n");
-    int i = printf("%5%\n");
-	printf ("ft = %d  print = %d", j, i);
-    return 0;
+	int i = ft_printf("%#08x", 2);
+	int j = printf("%#08x", 2);
 }
