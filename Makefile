@@ -16,7 +16,7 @@ OBJ        = $(SRC:%.c=$(SRC_DIR)/%.o) $(UTILS:%.c=$(UTILS_DIR)/%.o)
 BONUS_OBJ  = $(BONUS:%.c=$(SRC_DIR)/%.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -O0 -I $(INC_DIR) -I $(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -I $(LIBFT_DIR)
 
 .PHONY: all clean fclean re bonus
 

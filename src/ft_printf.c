@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:36:05 by thribeir          #+#    #+#             */
-/*   Updated: 2025/10/18 15:24:36 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/20 22:09:04 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ int	ft_printf(const char *format, ...)
 		{
 			ft_bzero(&fmt, sizeof(t_format));
 			i = parse_format(format, i + 1, &fmt, args);
-			if (fmt.left_align)
-				fmt.zero_pad = 0;
-			if (fmt.plus)
-				fmt.space = 0;
 			count += print_type(&fmt, args);
 		}
 		else
