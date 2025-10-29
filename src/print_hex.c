@@ -6,7 +6,7 @@
 /*   By: thribeir <thribeir@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:17:51 by thribeir          #+#    #+#             */
-/*   Updated: 2025/10/20 22:23:06 by thribeir         ###   ########.fr       */
+/*   Updated: 2025/10/20 22:33:37 by thribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	print_hex(va_list args, char *base, t_format *fmt)
 	num = apply_width(num, fmt);
 	if (fmt -> hash && n != 0 && ft_strncmp(base, "0123456789abcdef", 16) == 0)
 		num = strjoin_free("0x", num);
+	if (!num)
+		return (-1);
 	else if (fmt -> hash && n != 0
 		&& ft_strncmp(base, "0123456789ABCDEF", 16) == 0)
 		num = strjoin_free("0X", num);
